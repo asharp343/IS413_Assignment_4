@@ -28,6 +28,7 @@ namespace IS413_Assignment_4.Models
         public string Address { get; set; }
 
         [Phone]
+        [RegularExpression("^\\D?(\\d{3})\\D?\\D?(\\d{3})\\D?(\\d{4})$", ErrorMessage = "Input Phone number like 555-555-5555")]
         public string Phone { get; set; }
 
         public string? Link { get; set; } = "Coming soon";

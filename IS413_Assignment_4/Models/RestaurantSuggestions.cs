@@ -18,6 +18,7 @@ namespace IS413_Assignment_4.Models
         public string? FavDish { get; set; } = "It's all tasty!";
 
         [Phone]
+        [RegularExpression("^\\D?(\\d{3})\\D?\\D?(\\d{3})\\D?(\\d{4})$", ErrorMessage = "Input Phone number like 555-555-5555")]
         public string Phone { get; set; }
     }
 }
