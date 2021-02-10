@@ -1,8 +1,33 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
+    ViewData["Heading"] = "Welcome to our Guide for Restaurants";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+@model IEnumerable<Restaurant>
+
+
+<h3 class="text-center">Top 5 Restaurants</h3><br />
+
+<table class="table table-striped thead-dark">
+    <tr>
+        <th>Ranking</th>
+        <th>Name</th>
+        <th>Favorite Dish</th>
+        <th>Address</th>
+        <th>Phone</th>
+        <th>Website</th>
+    </tr>
+    @foreach (Restaurant restaurant in Model)
+    {
+      
+        <tr>
+            <td>@restaurant.Rank</td>
+            <td>@restaurant.Name</td>
+            <td>@restaurant.FavDish</td>
+            <td>@restaurant.Address</td>
+            <td>@restaurant.Phone</td>
+            <td><a href="https://@restaurant.Link" target="_blank">@restaurant.Link</a></td>
+        </tr>
+    }
+
+</table>

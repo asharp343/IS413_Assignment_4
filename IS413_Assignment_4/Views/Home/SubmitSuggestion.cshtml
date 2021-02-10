@@ -1,0 +1,33 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Add Suggestsions";
+    ViewData["Heading"] = "Add Suggestions";
+}
+
+@model IS413_Assignment_4.Models.RestaurantSuggestions
+
+<div class="text-center">
+    <form asp-action="SubmitSuggestion" method="post">
+
+        <label asp-for="Name">Your Name: </label>
+        <input asp-for="Name" /><br />
+        <div>@Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })</div>
+        
+        <label asp-for="RestaurantName">Restaurant Name: </label>
+        <input asp-for="RestaurantName" /><br />
+        <div>@Html.ValidationMessageFor(model => model.RestaurantName, "", new { @class = "text-danger" })</div>
+
+        <label asp-for="FavDish">Favorite Dish: </label>
+        <input asp-for="FavDish" /><br />
+
+        <label asp-for="Phone">Phone Number: </label>
+        <input asp-for="Phone" /><br />
+        <div>@Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })</div>
+
+        <br />
+        <button class="btn btn-primary" type="submit">Submit</button><br />
+
+    </form>
+</div>

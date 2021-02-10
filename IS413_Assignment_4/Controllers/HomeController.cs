@@ -20,11 +20,45 @@ namespace IS413_Assignment_4.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            List<Restaurant> RestarantList = new List<Restaurant>();
+
+            foreach(Restaurant r in Restaurant.GetRestaurants())
+            {
+                r.Link = r.Link ?? "Coming Soon";
+                r.FavDish = r.FavDish ?? "It's all tasty!";
+
+                RestarantList.Add(r);
+            }
+
+            return View(RestarantList);
         }
 
         public IActionResult Privacy()
         {
+            return View();
+        }
+
+        public IActionResult Suggestions()
+        {
+            return View(TempStorage.Restaurants);
+        }
+
+        [HttpGet]
+        public IActionResult SubmitSuggestion()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult SubmitSuggestion(RestaurantSuggestions restaurant)
+        {
+            if (ModelState.IsValid)
+            {
+                restaurant.FavDish = restaurant.FavDish ?? "It's all tasty!";
+
+                TempStorage.AddRestaurant(restaurant);
+                return View("Suggestions", TempStorage.Restaurants);
+            }
             return View();
         }
 

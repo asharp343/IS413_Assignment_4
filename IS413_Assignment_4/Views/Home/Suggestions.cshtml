@@ -1,0 +1,34 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Suggestsions";
+    ViewData["Heading"] = "Suggestions";
+}
+
+@model IEnumerable<IS413_Assignment_4.Models.RestaurantSuggestions>
+
+
+<div class="text-center">
+    <a class="btn btn-primary" asp-action="SubmitSuggestion">Add Suggestions</a>
+</div><br />
+
+
+<table class="table table-striped thead-dark ">
+    <tr>
+        <th>Your Name</th>
+        <th>Restaurant Name</th>
+        <th>Favorite Dish</th>
+        <th>Phone</th>
+    </tr>
+    @foreach (RestaurantSuggestions r in Model)
+    {
+        <tr>
+            <td>@r.Name</td>
+            <td>@r.RestaurantName</td>
+            <td>@r.FavDish</td>
+            <td>@r.Phone</td>
+        </tr>
+    }
+
+</table>
